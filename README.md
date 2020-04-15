@@ -11,3 +11,4 @@ This script uses UPnP to reconnect the FRITZ!Box. Tested with FRITZ!OS 7.12
   </s:Body>
 </s:Envelope>
 ```
+Idea from Ferry Boender: https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
