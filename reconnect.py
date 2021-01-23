@@ -1,4 +1,5 @@
 import urllib.request
+from socket import gethostbyname_ex
 from sys import argv
 
 def reconnect(host="fritz.box", port=49000):
@@ -53,6 +54,7 @@ if __name__ == "__main__":
     result = reconnect(host, port)
     
     if debug or "Error" in result:
-        print(result)
+        print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port)
+        print("\n", result)
     elif ":service:WANIPConnection:2" in result and "ForceTerminationResponse" in result:
         print("Success")
