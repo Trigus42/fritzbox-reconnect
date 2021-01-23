@@ -54,5 +54,5 @@ if __name__ == "__main__":
     
     if debug or "Error" in result:
         print(result)
-    elif "service:WANIPConnection:2" in result:
+    elif ":service:WANIPConnection:2" in result and "ForceTerminationResponse" in result:
         print("Success")
