@@ -56,16 +56,16 @@ if __name__ == "__main__":
     result = reconnect(host, port)
     
     if "urlopen error" in result and ("getaddrinfo failed" in result or "Name or service not known" in result):
-        print(f"Could not find", host)
+        print(f"Could not find", host, "\n")
         print(result)
 
     elif "Error" in result:
-        print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port)
+        print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port, "\n")
         print(result)
 
     elif ":service:WANIPConnection:2" in result and "ForceTerminationResponse" in result:
         if debug:
-            print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port)
+            print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port, "\n")
             print(result)
         else:
             print("Success")
