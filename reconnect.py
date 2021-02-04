@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     result = reconnect(host, port)
     
-    if "<urlopen error [Errno 11001] getaddrinfo failed>" == result:
+    if "urlopen error" in result and ("getaddrinfo failed" in result or "Name or service not known" in result):
         print(f"Could not find", host)
         print(result)
 
