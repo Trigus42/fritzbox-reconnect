@@ -21,7 +21,7 @@ def reconnect(host="fritz.box", port=49000):
         'Content-Length': len(soap_body),
     }
 
-    ctrl_url = "http://fritz.box:49000/igd2upnp/control/WANIPConn1"
+    ctrl_url = "http://" + host + ":49000/igd2upnp/control/WANIPConn1"
 
     request = urllib.request.Request(ctrl_url, bytes(soap_body, "utf-8"), headers)
 
@@ -29,6 +29,8 @@ def reconnect(host="fritz.box", port=49000):
         return urllib.request.urlopen(request).read().decode()
     except urllib.error.HTTPError as e:
         return e.read().decode()
+    except urllib.error.URLError as e:
+        return str(e)
 
 if __name__ == "__main__":
 
@@ -53,8 +55,17 @@ if __name__ == "__main__":
 
     result = reconnect(host, port)
     
-    if debug or "Error" in result:
+    if "<urlopen error [Errno 11001] getaddrinfo failed>" == result:
+        print(f"Could not find", host)
+        print(result)
+
+    elif "Error" in result:
         print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port)
-        print("\n", result)
+        print(result)
+
     elif ":service:WANIPConnection:2" in result and "ForceTerminationResponse" in result:
-        print("Success")
+        if debug:
+            print("Host:", host, "\nIP:", gethostbyname_ex(host)[2][0], "\nPort:", port)
+            print(result)
+        else:
+            print("Success")
