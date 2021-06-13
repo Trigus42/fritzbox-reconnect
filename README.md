@@ -32,4 +32,4 @@ Example usage with cron:
 30 04 * * * /usr/bin/python3 /root/reconnect.py --host 192.168.178.1
 ```
 
-Idea from Ferry Boender: https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/
+Based on: https://github.com/0x7d7b/fritzbox-reconnect
