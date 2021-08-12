@@ -1,5 +1,7 @@
 # FRITZ!Box - Reconnect Script
 
+## Replaced by: https://github.com/Trigus42/FritzBox-UPNP
+
 This script uses UPnP to reconnect the FRITZ!Box. Tested with FRITZ!OS 7.12 and 07.20 on the FRITZ!Box 6490 Cable.
 
 Options:
